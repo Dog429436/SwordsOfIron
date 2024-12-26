@@ -1,0 +1,104 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html style="height: 100%;">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style>
+        body {
+            background-color: gray;
+        }
+
+        table {
+            text-align: right;
+        }
+
+        td {
+            width: 100%;
+            text-align: right;
+        }
+
+        a {
+            color: black;
+            text-decoration: none;
+        }
+
+            a:hover {
+                border-bottom: 2px solid black;
+            }
+
+        .rtl {
+            direction: rtl;
+        }
+    </style>
+</head>
+<body>
+    <form id="My form" method="post" action="">
+        <table border="1" style="width: 100%; text-align: center">
+            <tr>
+                <td colspan="2" style="text-align: center">
+                    <div style="float: left">
+                        <table>
+                            <tr>
+                                <td>
+                                    <img src="Pictures/tichon.png" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="text-align: center; display: inline-block">
+                        <h2>מלחמת חרבות ברזל
+                        </h2>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: center">| <a href="HomePage.aspx">דף הבית</a>
+                    | <a href="SiteMap.aspx">מפת אתר</a>
+                    | <a href="Targets.aspx">מטרות האתר</a>
+                    <%= ProtectedLink%>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h2>
+                        <asp:ContentPlaceHolder ID="PageName" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </h2>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:ContentPlaceHolder ID="info" runat="server">
+                    </asp:ContentPlaceHolder>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div style="float: left; display: inline-block">
+                        הדף נוצר על ידי רואי                      
+                    </div>
+                    <div style="float: right; display: inline-block">
+                        <%=Counter%> : מספר כניסות                         
+                        
+                        <div style="float: left; display: inline-block">
+                            <%if (Session["isUser"] == null)
+                                {
+                                    Response.Write(" שלום אורח .");
+                                }
+                                else
+                                {
+                                    Response.Write(Session["isUser"] + "  שלום  .");
+                                }
+                            %>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
